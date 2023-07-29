@@ -52,6 +52,12 @@ class FileOperations {
     }
     return this.create(newUsers);
   };
+
+  replace = async () => {
+    const newPath = path.join(__dirname, "..", "alex");
+    fs.mkdir(newPath);
+    return await fs.rename(this.path, path.join(newPath, "users.json"));
+  };
 }
 const file = new FileOperations(usersPath);
 // file.display();
@@ -77,6 +83,6 @@ const users = [
 
 // file.remove()
 // file.findAndUpdate("27", { name: "Julia Karas" });
-file.findAndRemove("5");
-
+// file.findAndRemove("5");
+// file.replace();
 // file.replace()-повністю удаляє із db/users.json та переносить в папку alex/users.json
